@@ -3,13 +3,12 @@ The 1 month 4 apps challenge.
 
 0. [Why](#why)
 1. [Rules](#rules)
-2. [What will you build](#what-will-you-build)
-3. [What are you building](#what-are-you-building)
+2. [What am I building](#what-am-i-building)
 
 
 ## Why
 
-I am a computer programmer 😁, other than my day job there is really no place I could practice programming for my own gain. So I came up with the 1 month 4 app challenge which I hope I can keep doing it for the rest of my career. I think this will be a great learning experience for me.
+I am a computer engineer 😁, other than my day job there is really no place I could practice programming for my own interests. So I came up with the 1 month 4 app challenge which I hope I can keep doing it for the rest of my career. I think this will be a great learning experience for me.
 
 ## Rules
 
@@ -22,13 +21,10 @@ These are the **rules** that I will obey over the course of the challenge.
 4. Usage of existing code (written by me or others) is forbidden.
 5. By the end of the month, all 4 apps should be in "Ready for review" state in Apple App Store or live in Google Play Store
 
-## What will you build
 
-I really don't know at this momenet.
+## What am I building
 
-## What are you building
-
-0.	Week 1
-1.	Week 2
-2.	Week 3
-3.	Week 4
+-	Week 1 (Github Discovery App)
+-	Week 2
+-	Week 3
+-	Week 4
