@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('starter', ['ionic','ionic.service.core', 'ionic.service.analytics', 'starter.controllers', 'starter.services'])
+angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analytics', 'gdiscover.controllers', 'gdiscover.services'])
 
 .run(function($ionicPlatform, $ionicAnalytics) {
   $ionicPlatform.ready(function() {
@@ -42,46 +42,36 @@ angular.module('starter', ['ionic','ionic.service.core', 'ionic.service.analytic
 
   // Each tab has its own nav history stack:
 
-  .state('tab.dash', {
-    url: '/dash',
+  .state('tab.watches', {
+    url: '/watches',
     views: {
-      'tab-dash': {
-        templateUrl: 'templates/tab-dash.html',
-        controller: 'DashCtrl'
+      'tab-watches': {
+        templateUrl: 'templates/tab-watches.html',
+        controller: ''
       }
     }
   })
 
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.search', {
+      url: '/search',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-search': {
+          templateUrl: 'templates/tab-search.html',
+          controller: ''
         }
       }
     })
-    .state('tab.chat-detail', {
-      url: '/chats/:chatId',
+    .state('tab.favorite', {
+      url: '/favorite',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/chat-detail.html',
-          controller: 'ChatDetailCtrl'
+        'tab-favorite': {
+          templateUrl: 'templates/tab-favorite.html',
+          controller: ''
         }
       }
-    })
-
-  .state('tab.account', {
-    url: '/account',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
-      }
-    }
-  });
+    });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/dash');
+  $urlRouterProvider.otherwise('/tab/watches');
 
 });
