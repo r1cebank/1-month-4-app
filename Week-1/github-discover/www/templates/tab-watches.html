@@ -1,5 +1,18 @@
 <ion-view view-title="Watches">
-  <ion-content>
-    Hi
+    <ion-content>
+        <ion-refresher
+          pulling-text="Pull to refresh..."
+          on-refresh="refresh()">
+        </ion-refresher>
+        <ion-list>
+            <div class="card" ng-repeat="item in items track by $index">
+                <div class="item item-avatar item-icon-right" href="#">
+                    <img ng-src="{{trustSrc(item.owner.avatar_url)}}">
+                    <h2>{{item.name}}</h2>
+                    <a ng-click="openAuthorLink($index)">{{item.owner.login}}</a> / <a ng-click="openRepoLink($index)">{{item.name}}</a>
+                    <i class="icon ion-ios-heart-outline assertive"></i>
+                </div>
+            </div>
+        </ion-list>
   </ion-content>
 </ion-view>

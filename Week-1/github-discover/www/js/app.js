@@ -7,11 +7,25 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analytics', 'gdiscover.controllers', 'gdiscover.services'])
 
-.run(function($ionicPlatform, $ionicAnalytics) {
+.run(function($ionicPlatform, $ionicAnalytics, $ionicPopup) {
   $ionicPlatform.ready(function() {
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     $ionicAnalytics.register();
+
+    if(window.Connection) {
+        if(navigator.connection.type == Connection.NONE) {
+            $ionicPopup.confirm({
+                title: "Internet Disconnected",
+                content: "The internet is disconnected on your device."
+            })
+            .then(function(result) {
+                if(!result) {
+                    ionic.Platform.exitApp();
+                }
+            });
+        }
+    }
 
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
@@ -47,7 +61,7 @@ angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analyt
     views: {
       'tab-watches': {
         templateUrl: 'templates/tab-watches.html',
-        controller: ''
+        controller: 'watchesCtl'
       }
     }
   })
