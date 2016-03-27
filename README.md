@@ -24,7 +24,7 @@ These are the **rules** that I will obey over the course of the challenge.
 
 ## What am I building
 
--	Week 1 (Github Discovery App)
--	Week 2
+-	[Week 1](Week-1/README.md)
+ (March 28-April 3) (Github Discovery App)-	Week 2
 -	Week 3
 -	Week 4
