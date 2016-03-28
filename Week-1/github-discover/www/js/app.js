@@ -7,85 +7,107 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analytics', 'gdiscover.controllers', 'gdiscover.services'])
 
-.run(function($ionicPlatform, $ionicAnalytics, $ionicPopup) {
-  $ionicPlatform.ready(function() {
-    // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
-    // for form inputs)
-    $ionicAnalytics.register();
+.run(function($ionicPlatform, $ionicAnalytics, $ionicPopup, $window) {
+    //  On Resume update the user object
+    $ionicPlatform.on('resume', function(){
+        // Run stuff on resume
+    });
+    $ionicPlatform.ready(function() {
+        // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
+        // for form inputs)
+        $ionicAnalytics.register();
 
-    if(window.Connection) {
-        if(navigator.connection.type == Connection.NONE) {
-            $ionicPopup.confirm({
-                title: "Internet Disconnected",
-                content: "The internet is disconnected on your device."
-            })
-            .then(function(result) {
-                if(!result) {
-                    ionic.Platform.exitApp();
-                }
-            });
+        //  Check settings
+        if(!$window.localStorage['watches']) {
+            $window.localStorage['watches'] = JSON.stringify(['r1cebank']);
         }
-    }
+        if(!$window.localStorage['favorites']) {
+            $window.localStorage['favorites'] = JSON.stringify({});
+        }
 
-    if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
-      cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
-      cordova.plugins.Keyboard.disableScroll(true);
+        if(window.Connection) {
+            if(navigator.connection.type == Connection.NONE) {
+                $ionicPopup.confirm({
+                    title: "Internet Disconnected",
+                    content: "The internet is disconnected on your device."
+                })
+                .then(function(result) {
+                    if(!result) {
+                        ionic.Platform.exitApp();
+                    }
+                });
+            }
+        }
 
-    }
-    if (window.StatusBar) {
-      // org.apache.cordova.statusbar required
-      StatusBar.styleDefault();
-    }
-  });
+        if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
+            cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
+            cordova.plugins.Keyboard.disableScroll(true);
+
+        }
+        if (window.StatusBar) {
+            // org.apache.cordova.statusbar required
+            StatusBar.styleDefault();
+        }
+    });
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  // Ionic uses AngularUI Router which uses the concept of states
-  // Learn more here: https://github.com/angular-ui/ui-router
-  // Set up the various states which the app can be in.
-  // Each state's controller can be found in controllers.js
-  $stateProvider
+    // Ionic uses AngularUI Router which uses the concept of states
+    // Learn more here: https://github.com/angular-ui/ui-router
+    // Set up the various states which the app can be in.
+    // Each state's controller can be found in controllers.js
+    $stateProvider
 
-  // setup an abstract state for the tabs directive
+    // setup an abstract state for the tabs directive
     .state('tab', {
-    url: '/tab',
-    abstract: true,
-    templateUrl: 'templates/tabs.html'
-  })
+        url: '/tab',
+        abstract: true,
+        templateUrl: 'templates/tabs.html'
+    })
 
-  // Each tab has its own nav history stack:
+    // Each tab has its own nav history stack:
 
-  .state('tab.watches', {
-    url: '/watches',
-    views: {
-      'tab-watches': {
-        templateUrl: 'templates/tab-watches.html',
-        controller: 'watchesCtl'
-      }
-    }
-  })
-
-  .state('tab.search', {
-      url: '/search',
-      views: {
-        'tab-search': {
-          templateUrl: 'templates/tab-search.html',
-          controller: ''
+    .state('tab.watches', {
+        url: '/watches',
+        views: {
+            'tab-watches': {
+                templateUrl: 'templates/tab-watches.html',
+                controller: 'watchesCtl'
+            }
         }
-      }
+    })
+
+    .state('tab.search', {
+        url: '/search',
+        views: {
+            'tab-search': {
+                templateUrl: 'templates/tab-search.html',
+                controller: ''
+            }
+        }
+    })
+    .state('tab.settings', {
+        url: '/settings',
+        views: {
+            'tab-settings': {
+                templateUrl: 'templates/tab-settings.html',
+                controller: ''
+            }
+        }
     })
     .state('tab.favorite', {
-      url: '/favorite',
-      views: {
-        'tab-favorite': {
-          templateUrl: 'templates/tab-favorite.html',
-          controller: ''
+        url: '/favorite',
+        cache: false,
+        views: {
+            'tab-favorite': {
+                templateUrl: 'templates/tab-favorite.html',
+                controller: 'favoriteCtl'
+            }
         }
-      }
     });
 
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/tab/watches');
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/tab/watches');
 
 });

@@ -1,5 +1,19 @@
 <ion-view view-title="Favorite">
-  <ion-content>
-    Hi
-  </ion-content>
+    <ion-content>
+        <ion-list>
+            <ion-list>
+                <div class="card" ng-repeat="item in favorites track by $index">
+                    <div class="item item-avatar item-icon-right" href="#">
+                        <img ng-src="{{trustSrc(item.owner.avatar_url)}}">
+                        <h2>{{item.name}}</h2>
+                        <a ng-click="openAuthorLink($index)">{{item.owner.login}}</a> / <a ng-click="openRepoLink($index)">{{item.name}}</a>
+                        <i ng-class="{'icon ion-ios-heart assertive': item.fav, 'icon ion-ios-heart-outline assertive': !item.fav}" ng-click="favorite(item.full_name)"></i>
+                    </div>
+                    <div class="item item-divider">
+                        {{item.description}}
+                    </div>
+                </div>
+            </ion-list>
+        </ion-list>
+    </ion-content>
 </ion-view>
