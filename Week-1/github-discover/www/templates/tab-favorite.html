@@ -9,8 +9,9 @@
                         <a ng-click="openAuthorLink(item.full_name)">{{item.owner.login}}</a> / <a ng-click="openRepoLink(item.full_name)">{{item.name}}</a>
                         <i ng-class="{'icon ion-ios-heart assertive': item.fav, 'icon ion-ios-heart-outline assertive': !item.fav}" ng-click="favorite(item.full_name)"></i>
                     </div>
-                    <div class="item item-divider">
-                        {{item.description}}
+                    <div class="item item-icon-left calm" ng-click="openReadme(item.full_name)">
+                        <i class="icon ion-ios-paper"></i>
+                        Readme
                     </div>
                 </div>
             </ion-list>

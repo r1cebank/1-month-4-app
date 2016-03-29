@@ -15,7 +15,6 @@ angular.module('gdiscover.controllers')
 
     $scope.watches = $localstorage.getObject('watches');
     $scope.favorites = $localstorage.getObject('favorites');
-    // console.log($scope.favorites);
 
     $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred')
     .success(function(newItems) {
@@ -28,10 +27,6 @@ angular.module('gdiscover.controllers')
             return item;
         });
         $scope.items = newItems;
-    })
-    .finally(function() {
-        // Stop the ion-refresher from spinning
-        $scope.$broadcast('scroll.refreshComplete');
     });
 
     $scope.favorite = function(index) {

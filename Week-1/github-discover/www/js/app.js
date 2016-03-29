@@ -5,7 +5,7 @@
 // the 2nd parameter is an array of 'requires'
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
-angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analytics', 'gdiscover.controllers', 'gdiscover.services'])
+angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analytics', 'gdiscover.controllers', 'gdiscover.services', 'ionic-cache-src'])
 
 .run(function($ionicPlatform, $ionicAnalytics, $ionicPopup, $window) {
     //  On Resume update the user object
@@ -23,20 +23,6 @@ angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analyt
         }
         if(!$window.localStorage['favorites']) {
             $window.localStorage['favorites'] = JSON.stringify({});
-        }
-
-        if(window.Connection) {
-            if(navigator.connection.type == Connection.NONE) {
-                $ionicPopup.confirm({
-                    title: "Internet Disconnected",
-                    content: "The internet is disconnected on your device."
-                })
-                .then(function(result) {
-                    if(!result) {
-                        ionic.Platform.exitApp();
-                    }
-                });
-            }
         }
 
         if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {

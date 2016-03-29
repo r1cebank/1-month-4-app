@@ -23,6 +23,15 @@ angular.module('gdiscover.controllers')
         return false;
     };
 
+    $scope.openReadme = function(full_name) {
+        $http.get('https://api.github.com/repos/'+ full_name +'/readme')
+        .success(function(item) {
+            console.log(item);
+            window.open(item.html_url, '_blank', 'location=no');
+        });
+        return false;
+    };
+
     $scope.favorites = $localstorage.getObject('favorites');
 
     $scope.favorite = function(full_name) {
