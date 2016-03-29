@@ -6,7 +6,7 @@
                     <div class="item item-avatar item-icon-right" href="#">
                         <img ng-src="{{trustSrc(item.owner.avatar_url)}}">
                         <h2>{{item.name}}</h2>
-                        <a ng-click="openAuthorLink($index)">{{item.owner.login}}</a> / <a ng-click="openRepoLink($index)">{{item.name}}</a>
+                        <a ng-click="openAuthorLink(item.full_name)">{{item.owner.login}}</a> / <a ng-click="openRepoLink(item.full_name)">{{item.name}}</a>
                         <i ng-class="{'icon ion-ios-heart assertive': item.fav, 'icon ion-ios-heart-outline assertive': !item.fav}" ng-click="favorite(item.full_name)"></i>
                     </div>
                     <div class="item item-divider">

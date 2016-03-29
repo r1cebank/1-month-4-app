@@ -13,6 +13,16 @@ angular.module('gdiscover.controllers')
         return $sce.trustAsResourceUrl(src);
     };
 
+    $scope.openRepoLink = function(full_name) {
+        window.open($scope.favorites[full_name].html_url, '_blank', 'location=no');
+        return false;
+    };
+
+    $scope.openAuthorLink = function(full_name) {
+        window.open($scope.favorites[full_name].owner.html_url, '_blank', 'location=no');
+        return false;
+    };
+
     $scope.favorites = $localstorage.getObject('favorites');
 
     $scope.favorite = function(full_name) {

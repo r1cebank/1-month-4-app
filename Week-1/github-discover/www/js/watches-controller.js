@@ -52,7 +52,7 @@ angular.module('gdiscover.controllers')
         $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred')
         .success(function(newItems) {
             newItems = newItems.map(function(item) {
-                if(!$scope.favorite.includes(item.full_name)) {
+                if($scope.favorites[item.full_name]) {
                     item.fav = true;
                 } else {
                     item.fav = false;
@@ -76,4 +76,17 @@ angular.module('gdiscover.controllers')
         window.open($scope.items[index].owner.html_url, '_blank', 'location=no');
         return false;
     };
+
+    // On View load
+    $scope.$on('$ionicView.enter', function(){
+        $scope.favorites = $localstorage.getObject('favorites');
+        $scope.items = ($scope.items || []).map(function(item) {
+            if($scope.favorites[item.full_name]) {
+                item.fav = true;
+            } else {
+                item.fav = false;
+            }
+            return item;
+        });
+    });
 });
