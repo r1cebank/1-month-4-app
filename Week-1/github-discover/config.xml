@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="ca.ricebank.githubdiscovery" version="0.3.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-  <name>discover-github</name>
+<widget id="ca.ricebank.githubdiscovery" version="0.3.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+  <name>Discover</name>
   <description>
-        An Ionic Framework and Cordova project.
+        Discover cool github repositories.
     </description>
   <author email="siyuangao@gmail.com" href="http://ricebank.ca/">
       Siyuan Gao

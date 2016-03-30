@@ -84,7 +84,6 @@ angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analyt
     })
     .state('tab.favorite', {
         url: '/favorite',
-        cache: false,
         views: {
             'tab-favorite': {
                 templateUrl: 'templates/tab-favorite.html',
@@ -93,15 +92,13 @@ angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analyt
         }
     })
     .state('tab.favorite/:link', {
-        cache: false,
-        url: '/search/:link',
+        url: '/favorite/:link',
         views: {
             'tab-favorite': {
                 templateUrl: 'templates/tab-favorite-readme.html',
                 controller: 'readmeCtl'
             }
-        },
-        authRequired: true
+        }
     });
 
     // if none of the above states are matched, use this as the fallback

@@ -31,4 +31,10 @@ angular.module('gdiscover.controllers')
         //  Replace the object
         $localstorage.setObject('favorites', $scope.favorites);
     }
+
+    // On View load
+    $scope.$on('$ionicView.enter', function(){
+        $scope.favorites = $localstorage.getObject('favorites');
+        console.log('favorite entered');
+    });
 });
