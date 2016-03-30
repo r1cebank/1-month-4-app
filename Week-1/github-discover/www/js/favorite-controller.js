@@ -3,10 +3,10 @@
 */
 
 angular.module('gdiscover.controllers')
-.controller('favoriteCtl', function($scope, $state, $localstorage, $sce, $location, $ionicPopup, $window, $http) {
+.controller('favoriteCtl', function($scope, $state, $localstorage, $ionicPopup, $sce, $location, $ionicPopup, $window, $http) {
 
-    $scope.go = function(path) {
-        $state.go(path);
+    $scope.go = function(path, params) {
+        $state.go(path, params);
     };
 
     $scope.trustSrc = function(src) {
@@ -20,15 +20,6 @@ angular.module('gdiscover.controllers')
 
     $scope.openAuthorLink = function(full_name) {
         window.open($scope.favorites[full_name].owner.html_url, '_blank', 'location=no');
-        return false;
-    };
-
-    $scope.openReadme = function(full_name) {
-        $http.get('https://api.github.com/repos/'+ full_name +'/readme')
-        .success(function(item) {
-            console.log(item);
-            window.open(item.html_url, '_blank', 'location=no');
-        });
         return false;
     };
 

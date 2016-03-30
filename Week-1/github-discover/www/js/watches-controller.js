@@ -16,7 +16,9 @@ angular.module('gdiscover.controllers')
     $scope.watches = $localstorage.getObject('watches');
     $scope.favorites = $localstorage.getObject('favorites');
 
-    $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred')
+    $scope.page = 1;
+
+    $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page='+ $scope.page + '&per_page=20')
     .success(function(newItems) {
         newItems = newItems.map(function(item) {
             if($scope.favorites[item.full_name]) {
@@ -28,6 +30,16 @@ angular.module('gdiscover.controllers')
         });
         $scope.items = newItems;
     });
+
+    $scope.loadMore = function() {
+        $scope.page = $scope.page + 1;
+        $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page='+ $scope.page + '&per_page=20')
+        .success(function(items) {
+            console.log(items);
+            $scope.items = $scope.items.concat(items);
+            $scope.$broadcast('scroll.infiniteScrollComplete');
+        });
+    };
 
     $scope.favorite = function(index) {
         console.log('Fav: ' + index);
@@ -44,7 +56,7 @@ angular.module('gdiscover.controllers')
 
     $scope.refresh = function() {
         console.log('refreshing');
-        $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred')
+        $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page=1&per_page=20')
         .success(function(newItems) {
             newItems = newItems.map(function(item) {
                 if($scope.favorites[item.full_name]) {
