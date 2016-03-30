@@ -15,4 +15,7 @@ angular.module('gdiscover.services', [])
             return JSON.parse($window.localStorage[key] || '{}');
         }
     };
-}]);
+}])
+.factory('$token', function() {
+    return 'a7086199f5e0db43e83b61f3cfadddbc353cfed9';
+});

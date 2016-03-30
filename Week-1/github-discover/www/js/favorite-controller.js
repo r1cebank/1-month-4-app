@@ -3,7 +3,7 @@
 */
 
 angular.module('gdiscover.controllers')
-.controller('favoriteCtl', function($scope, $state, $localstorage, $ionicPopup, $sce, $location, $ionicPopup, $window, $http) {
+.controller('favoriteCtl', function($scope, $state, $localstorage, $token, $ionicPopup, $sce, $location, $ionicPopup, $window, $http) {
 
     $scope.go = function(path, params) {
         $state.go(path, params);

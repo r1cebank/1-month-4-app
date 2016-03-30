@@ -1,5 +1,5 @@
 angular.module('gdiscover.controllers')
-.controller('readmeCtl', function($scope, $state, $stateParams, $localstorage, $ionicPopup, $sce, $location, $ionicPopup, $window, $http) {
+.controller('readmeCtl', function($scope, $state, $stateParams, $token, $localstorage, $ionicPopup, $sce, $location, $ionicPopup, $window, $http) {
     if($stateParams.link) {
         $http.get('https://api.github.com/repos/'+ $stateParams.link +'/readme')
         .success(function(item) {

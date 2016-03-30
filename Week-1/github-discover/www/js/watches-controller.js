@@ -3,7 +3,7 @@
 */
 
 angular.module('gdiscover.controllers')
-.controller('watchesCtl', function($scope, $state, $localstorage, $sce, $location, $ionicPopup, $window, $http) {
+.controller('watchesCtl', function($scope, $state, $localstorage, $token, $sce, $location, $ionicPopup, $window, $http) {
 
     $scope.go = function(path) {
         $state.go(path);
@@ -18,7 +18,7 @@ angular.module('gdiscover.controllers')
 
     $scope.page = 1;
 
-    $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page='+ $scope.page + '&per_page=20')
+    $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page='+ $scope.page + '&per_page=20&access_token=' + $token)
     .success(function(newItems) {
         newItems = newItems.map(function(item) {
             if($scope.favorites[item.full_name]) {
@@ -33,7 +33,7 @@ angular.module('gdiscover.controllers')
 
     $scope.loadMore = function() {
         $scope.page = $scope.page + 1;
-        $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page='+ $scope.page + '&per_page=20')
+        $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page='+ $scope.page + '&per_page=20&access_token=' + $token)
         .success(function(items) {
             console.log(items);
             $scope.items = $scope.items.concat(items);
@@ -56,7 +56,7 @@ angular.module('gdiscover.controllers')
 
     $scope.refresh = function() {
         console.log('refreshing');
-        $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page=1&per_page=20')
+        $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page=1&per_page=20&access_token=' + $token)
         .success(function(newItems) {
             newItems = newItems.map(function(item) {
                 if($scope.favorites[item.full_name]) {
