@@ -6,7 +6,14 @@
 // 'starter.services' is found in services.js
 // 'starter.controllers' is found in controllers.js
 angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analytics', 'gdiscover.controllers', 'gdiscover.services', 'ionic-cache-src'])
-
+.filter('hrefToJS', function ($sce, $sanitize) {
+    debugger;
+    return function (text) {
+        var regex = /href="([\S]+)"/g;
+        var newString = $sanitize(text).replace(regex, "href=\"#\" onClick=\"window.open('$1', '_blank', 'location=yes')\"");
+        return $sce.trustAsHtml(newString);
+    }
+})
 .run(function($ionicPlatform, $ionicAnalytics, $ionicPopup, $window) {
     //  On Resume update the user object
     $ionicPlatform.on('resume', function(){
@@ -51,6 +58,11 @@ angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analyt
         abstract: true,
         templateUrl: 'templates/tabs.html'
     })
+    .state('intro', {
+        url: '/intro',
+        templateUrl: 'templates/intro.html',
+        controller: 'introCtl'
+    })
 
     // Each tab has its own nav history stack:
 
@@ -69,7 +81,16 @@ angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analyt
         views: {
             'tab-search': {
                 templateUrl: 'templates/tab-search.html',
-                controller: ''
+                controller: 'searchCtl'
+            }
+        }
+    })
+    .state('tab.search/:data', {
+        url: '/search/:data',
+        views: {
+            'tab-search': {
+                templateUrl: 'templates/tab-search-data.html',
+                controller: 'searchDataCtl'
             }
         }
     })

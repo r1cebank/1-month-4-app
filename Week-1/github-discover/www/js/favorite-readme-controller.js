@@ -5,13 +5,18 @@ angular.module('gdiscover.controllers')
         .success(function(item) {
             $http.get(item.download_url)
             .success(function(readme) {
-                var converter = new showdown.Converter();
-                $scope.readme = $sce.trustAsHtml(converter.makeHtml(readme));
-                console.log($scope.readme);
+                $http.post('https://api.github.com/markdown', {
+                    context: $stateParams.link,
+                    mode: 'gfm',
+                    text: readme
+                })
+                .success(function(readme) {
+                    $scope.readme = $sce.trustAsHtml(readme);
+                });
             });
         })
         .error(function(data, status) {
-            //  Set no readme markdown
+            $scope.readme = $sce.trustAsHtml('<h3>No readme avaliable</h3>');
         });
     }
 });

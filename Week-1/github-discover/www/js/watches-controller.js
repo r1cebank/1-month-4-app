@@ -35,7 +35,6 @@ angular.module('gdiscover.controllers')
         $scope.page = $scope.page + 1;
         $http.get('https://api.github.com/users/'+ $scope.watches[0] +'/starred?page='+ $scope.page + '&per_page=20&access_token=' + $token)
         .success(function(items) {
-            console.log(items);
             $scope.items = $scope.items.concat(items);
             $scope.$broadcast('scroll.infiniteScrollComplete');
         });

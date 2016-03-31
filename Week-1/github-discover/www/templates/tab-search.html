@@ -1,10 +1,33 @@
 <ion-view view-title="Search">
-  <ion-content>
-    <div class="list list-inset">
-        <label class="item item-input">
-            <i class="icon ion-search placeholder-icon"></i>
-            <input type="text" placeholder="Search">
-        </label>
-    </div>
-  </ion-content>
+    <ion-content>
+        <div class="list list-inset">
+            <label class="item item-input">
+                <div class="input-label">
+                    Query
+                </div>
+                <input type="text" ng-model="data.query">
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Language
+                </div>
+                <select ng-model="data.language">
+                    <option ng-repeat="language in languages">{{language.name}}</option>
+                </select>
+            </label>
+            <label class="item item-input item-select">
+                <div class="input-label">
+                    Sort
+                </div>
+                <select ng-model="data.sort">
+                    <option>Stars</option>
+                    <option>Forks</option>
+                    <option>Updated</option>
+                </select>
+            </label>
+            <button class="button button-block button-balanced" ng-click="search()">
+                Search
+            </button>
+        </div>
+    </ion-content>
 </ion-view>
