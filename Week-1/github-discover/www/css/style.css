@@ -1,1 +1,14 @@
 /* Empty. Add your own CSS if you like */
+.repo-item.ng-enter {
+    -webkit-animation: fadeInLeft 1s;
+    animation: fadeInLeft 1s;
+}
+
+.repo-item.ng-enter-stagger {
+  -webkit-animation-delay:100ms;
+  animation-delay:100ms;
+
+  /* override to make sure it's not inherited from other styles */
+  -webkit-animation-duration:0;
+  animation-duration:0;
+}

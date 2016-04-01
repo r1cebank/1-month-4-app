@@ -5,7 +5,7 @@
         on-refresh="refresh()">
     </ion-refresher>
     <ion-list>
-        <div class="card" ng-repeat="item in items track by $index">
+        <div class="card repo-item" ng-repeat="item in items track by $index">
             <div class="item item-avatar item-icon-right" href="#">
                 <img cache-src="{{trustSrc(item.owner.avatar_url)}}" expire="{{86400}}" circle-container-style="display:none;">
                 <h2>{{item.name}}</h2>
