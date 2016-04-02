@@ -1,12 +1,15 @@
 <ion-view view-title="Settings">
     <ion-content>
-        <form name="signupform" novalidate>
-            <ion-list>
-                <label class="item item-input">
-                    <span class="input-label">Watching:</span>
-                    <input type="text" name="username" ng-model="data.username" data-ng-init="data.username" required>
-                </label>
-            </ion-list>
-        </form>
-    </ion-content>
-</ion-view>
+        <div class="card">
+            <div class="item item-text-wrap">
+                <form name="signupform" novalidate>
+                    <ion-list>
+                        <label class="item item-input">
+                            <span class="input-label">Starred:</span>
+                            <input type="text" name="username" ng-model="data.username" ng-change="watchChange()" required>
+                        </label>
+                    </ion-list>
+                </form>
+            </div>
+        </ion-content>
+    </ion-view>

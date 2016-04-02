@@ -99,7 +99,7 @@ angular.module('gdiscover', ['ionic','ionic.service.core', 'ionic.service.analyt
         views: {
             'tab-settings': {
                 templateUrl: 'templates/tab-settings.html',
-                controller: ''
+                controller: 'settingCtl'
             }
         }
     })

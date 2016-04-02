@@ -9,7 +9,8 @@
                     <i ng-class="{'icon ion-ios-heart assertive': item.fav, 'icon ion-ios-heart-outline assertive': !item.fav}" ng-click="favorite($index)"></i>
                 </div>
                 <div class="item item-divider">
-                    {{item.description}}
+                    <i class="icon ion-star"> {{item.stargazers_count}}</i>
+                    <span class="item-note"><i class="icon ion-eye"> {{item.watchers_count}}</i></span>
                 </div>
             </div>
             <div class="card" ng-if="items.length < 1">
