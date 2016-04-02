@@ -9,3 +9,6 @@ Features:
 - A search view you can search in Github
 - A favorite view to allow view favorited repos
 - A readme processor that proccess repo's readme into html and inject to page.
+
+
+(Waiting for review)

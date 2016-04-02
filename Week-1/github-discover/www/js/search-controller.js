@@ -1,10 +1,13 @@
 //// Languages JSON
 var languages = [
     {
+        "name":"All"
+    },
+    {
         "name":"JavaScript"
     },
     {
-        "name":"Swift"  
+        "name":"Swift"
     },
     {
         "name":"Java"
@@ -88,8 +91,8 @@ angular.module('gdiscover.controllers')
     $scope.languages = languages;
     $scope.data = { };
     $scope.data.query = '';
-    $scope.data.language = '';
-    $scope.data.sort = '';
+    $scope.data.language = 'All';
+    $scope.data.sort = 'Stars';
 
     $scope.go = function(path, params) {
         $state.go(path, params);
