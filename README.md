@@ -25,6 +25,7 @@ These are the **rules** that I will obey over the course of the challenge.
 ## What am I building
 
 -	[Week 1](Week-1/README.md)
- (March 28-April 3) (Github Discovery App)-	Week 2
--	Week 3
--	Week 4
+ (March 28-April 3) Github Discovery App - Ionic Framework
+-	[Week 2](Week-2/README.md) (April 4-10) Bill-splitter - React Native
+-	[Week 3](Week-3/README.md)
+-	[Week 4](Week-4/README.md)
